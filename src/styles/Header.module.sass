@@ -1,0 +1,41 @@
+@import 'mixins'
+@import 'variables'
+
+
+.pageHeader
+    position: fixed
+    z-index: 1
+    right: 0
+    left: 0
+    height: 50px
+    background-color: $elemBackgroundColor
+    box-shadow: $elemShadow
+
+
+.header
+    @include flexVCenterBetween
+.logo
+    width: 59px
+    opacity: 0.9
+.tools
+    @include flexVCenterBetween
+.search_img
+    position: relative
+    margin-right: -27px
+    margin-top: 2px
+    width: 16px
+    opacity: 0.6
+.top_search
+    @include inputInitial
+    height: 35px
+    width: 400px
+    border-radius: 50px
+    background-color: $appBackgroundColor
+    padding-right: 15px
+    font-size: 15px
+    text-indent: 35px
+.welcome
+    @include flexVCenterBetween
+    margin-left: 50px
+.pr_photo
+    @include iconPhoto

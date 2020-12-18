@@ -1,0 +1,31 @@
+@import 'mixins'
+@import 'variables'
+
+*
+    box-sizing: border-box
+    padding: 0
+    margin: 0
+    font-family: 'Roboto', sans-serif
+
+.app
+    background-color: $appBackgroundColor
+    color: $appColor
+    font-size: $appFontSize
+    //background: url('https://images.wallpaperscraft.ru/image/tekstura_fon_tekst_simvoly_50473_1920x1080.jpg') center (center / cover) no-repeat
+    //background: url('https://crossarea.ru/wp-content/uploads/2018/07/chto-takoe-graffiti.jpg') center (center / cover) no-repeat
+    //background-attachment: fixed
+
+.element
+    border-radius: 5px
+    padding: 15px
+    background-color: $elemBackgroundColor
+    box-shadow: $elemShadow
+
+.fas
+    opacity: 0.6
+
+.interaction
+    @include interactionIcon
+
+.link_icon
+    @include linkIcon
