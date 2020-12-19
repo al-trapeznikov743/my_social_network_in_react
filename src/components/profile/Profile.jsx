@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../styles/Profile.module.sass'
+import styles from './Profile.module.sass'
 import ProfileInfo from './profileInfo/ProfileInfo'
 import UserInfo from './userInfo/UserInfo'
 import AddPost from './addPost/AddPost'

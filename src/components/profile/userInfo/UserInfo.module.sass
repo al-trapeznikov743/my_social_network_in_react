@@ -1,0 +1,41 @@
+@import '../../../sass/general/mixins'
+@import '../../../sass/general/variables'
+
+.user_info
+    grid-area: u_info
+.wrapper
+    display: grid
+    grid-auto-flow: row
+.full_name
+    font-size: 18px
+    font-weight: normal
+    margin-bottom: 3px
+    color: $userNameColor
+.status
+    font-size: 13px
+    color: $minorColor
+.location
+    display: flex
+    flex-direction: column
+    margin-top: 15px
+    &_item
+        display: flex
+        margin-bottom: 10px
+    &_value
+        width: 30%
+
+.location,
+.contacts
+    border-top: 1px solid $minorColor
+    padding-top: 15px
+.contacts
+    margin-top: 10px
+    margin-bottom: 10px
+    &_list
+        margin-bottom: 20px
+    &_item_wrapper
+        display: flex
+    &_item
+        color: $minorColor
+    &_value
+        width: 30%

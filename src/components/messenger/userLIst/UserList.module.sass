@@ -1,0 +1,24 @@
+@import '../../../sass/general/mixins'
+@import '../../../sass/general/variables'
+
+.list
+    grid-area: u-list
+.item
+    @include flexVCenterBetween
+    align-items: normal
+.descr
+    display: flex
+    justify-content: space-between
+.photo
+    @include peopleRecommendedPhoto
+.data
+    display: flex
+    flex-direction: column
+    margin-left: 13px
+    margin-top: 3px
+.username
+    @include userName
+    margin-bottom: 3px
+.last
+    color: $minorColor
+    margin-top: 3px

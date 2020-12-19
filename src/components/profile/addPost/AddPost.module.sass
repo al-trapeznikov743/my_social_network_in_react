@@ -1,0 +1,25 @@
+@import '../../../sass/general/mixins'
+@import '../../../sass/general/variables'
+
+.add_post
+    grid-area: post_add
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    min-height: 90px
+.field_wrapper
+    display: flex
+    justify-content: space-between
+.new
+    display: flex
+.field
+    @include inputInitial
+    width: 500px
+.icon
+    &:hover
+        cursor: pointer
+        opacity: 0.5
+.interaction
+    @include interaction
+.icons
+    display: flex
