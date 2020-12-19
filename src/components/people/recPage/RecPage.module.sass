@@ -1,0 +1,32 @@
+@import '../../../sass/general/variables'
+@import '../../../sass/general/mixins'
+    
+.rec_wrapper
+    grid-area: rec-wr
+.recommended
+    display: flex
+    flex-direction: column
+    align-items: center
+.descr
+    color: $minorColor
+.items
+    margin-top: 20px
+.item
+    display: flex
+    padding-bottom: 15px
+    &_data
+        display: flex
+        flex-direction: column
+        margin-left: 13px
+        margin-top: 10px
+.photo
+    @include peopleRecommendedPhoto
+.username
+    @include userName
+.status
+    color: $minorColor
+.icon
+    @include flexVCenterBetween
+    margin-left: 20px
+    margin-top: 11px
+    align-items: normal

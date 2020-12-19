@@ -1,0 +1,33 @@
+@import '../../../sass/general/mixins'
+@import '../../../sass/general/variables'
+
+.form_wrapper
+    grid-area: login
+.form
+    display: flex
+    flex-direction: column
+    &_item
+        margin-bottom: 13px
+        padding: 11px 12px
+.field
+    outline: none
+    padding: 11px 12px
+.config
+    @include flexVCenterBetween
+.remember
+    display: flex
+    align-items: center
+    &_descr
+        margin-right: 7px
+        color: $minorColor
+.forgot
+    color: $minorColor
+.create_ac
+    display: flex
+    flex-direction: column
+    align-items: center
+    border-top: 1px solid $minorColor
+    margin-top: 25px
+    padding: 16px 0 5px 0
+.create
+    color: $minorColor

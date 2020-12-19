@@ -1,4 +1,5 @@
-@import 'variables'
+@import '../../../sass/general/variables'
+@import '../../../sass/general/mixins'
     
 .sidebar
     position: fixed
@@ -11,6 +12,7 @@
     align-items: center
     height: 30px
     width: 100%
+    @include aInitial
     &:hover
         background-color: $sidebarHoverColor
         cursor: pointer

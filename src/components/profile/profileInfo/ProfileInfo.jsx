@@ -1,12 +1,13 @@
 import React from 'react'
-import styles from '../../../styles/ProfileInfo.module.sass'
-import profilePhoto from '../../../img/Rick.jpg'
+import {connect} from 'react-redux'
+import styles from './ProfileInfo.module.sass'
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
     return <div className={styles.info}>
         <div className={`${styles.wrapper} element`}>
-            <img src={profilePhoto} alt="img" className={styles.photo}/>
-            <span className={styles.nickname}>@john_Dev</span>
+            <img src={props.photo} alt="img" className={styles.photo}/>
+            <span className={styles.nickname}>@rick_Dev</span>
             <div className={styles.place}>
                 <div className={styles.link_icon}>
                     <i className='fas fa-map-marker-alt'></i>
@@ -37,4 +38,10 @@ const ProfileInfo = () => {
     </div>
 }
 
-export default ProfileInfo
+const mapStateToProps = (state) => {
+    return {
+        photo: state.profilePage.profile.photos.large
+    }
+}
+
+export default connect(mapStateToProps, null)(ProfileInfo)

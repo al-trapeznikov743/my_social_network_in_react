@@ -1,0 +1,22 @@
+@import '../../../sass/general/mixins'
+@import '../../../sass/general/variables'
+
+.recent
+    grid-area: rec-logins
+.list
+    display: grid
+    grid-template-columns: 1fr 1fr 1fr
+.item
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin: 0 7px
+    padding-top: 25px
+    padding-bottom: 25px
+.photo
+    @include peoplePhoto
+    width: 100px
+    height: 100px
+.username
+    @include userName
+    margin-top: 15px

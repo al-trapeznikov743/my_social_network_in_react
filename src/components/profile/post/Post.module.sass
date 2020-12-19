@@ -1,0 +1,30 @@
+@import '../../../sass/general/mixins'
+@import '../../../sass/general/variables'
+
+.post
+    grid-area: post
+.information
+    display: flex
+    margin-bottom: 13px
+    &_photo
+        @include profilePostPhoto
+    &_descr
+        display: flex
+        flex-direction: column
+        justify-content: space-evenly
+        margin-left: 3px
+.username
+    @include userName
+.date
+    color: $minorColor
+.content
+    color: $userNameColor
+.interaction
+    @include interaction
+    margin-top: 20px
+.icons
+    display: flex
+.icon
+    &:hover
+        cursor: pointer
+        opacity: 0.5

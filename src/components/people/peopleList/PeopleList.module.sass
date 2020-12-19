@@ -1,0 +1,26 @@
+@import '../../../sass/general/variables'
+@import '../../../sass/general/mixins'
+
+.list
+    grid-area: item-wr
+.item
+    @include flexVCenterBetween
+    align-items: normal
+.descr
+    display: flex
+    justify-content: space-between
+.wrapper
+    display: flex
+    flex-direction: column
+    margin-left: 13px
+    margin-top: 10px
+.photo
+  @include peoplePhoto
+.username
+  @include userName
+  margin-bottom: 3px
+.status
+    color: $minorColor
+.buttons
+  display: flex
+  align-items: flex-end

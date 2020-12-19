@@ -1,50 +1,51 @@
 import React from 'react'
-import styles from '../../styles/Sidebar.module.sass'
+import {NavLink} from 'react-router-dom'
+import styles from './Sidebar.module.sass'
 
 const Sidebar = () => {
     return <div className={styles.sidebar}>
         <nav className={styles.ul}>
-            <div className={styles.link}>
+            <NavLink to='/profile' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-home'></i>
                 </div>
                 <span>Home</span>
-            </div>
+            </NavLink>
 
-            <div className={styles.link}>
+            <NavLink to='/people' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-users'></i>
                 </div>
                 <span>People</span>
-            </div>
+            </NavLink>
 
-            <div className={styles.link}>
+            <NavLink to='/messenger' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-envelope'></i>
                 </div>
                 <span>Messenger</span>
-            </div>
+            </NavLink>
 
-            <div className={styles.link}>
+            <NavLink to='#' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-newspaper'></i>
                 </div>
                 <span>News</span>
-            </div>
+            </NavLink>
 
-            <div className={styles.link}>
+            <NavLink to='#' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-compact-disc'></i>
                 </div>
                 <span>Music</span>
-            </div>
+            </NavLink>
 
-            <div className={styles.link}>
+            <NavLink to='#' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-cog'></i>
                 </div>
                 <span>Settings</span>
-            </div>
+            </NavLink>
         </nav>
     </div>
 }
