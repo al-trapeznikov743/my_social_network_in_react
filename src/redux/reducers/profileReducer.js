@@ -4,8 +4,8 @@ const profile = getProfileState()
 
 const initialState = {
     posts: [
-        {id: 1, username: 'User Name', message: 'What you need?'},
-        {id: 2, username: 'User Name', message: 'Hello, world...'}
+        {id: 1, username: 'Rick Sanchez', message: 'What you need?'},
+        {id: 2, username: 'Rick Sanchez', message: 'Hello, world...'}
     ],
     profile: profile,
     status: 'Nigga'
