@@ -1,15 +1,15 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import styles from './UserInfo.module.sass'
 
 const UserInfo = (props) => {
 
-    const contacts = props.profile.contacts
-    const fullName = props.profile.fullName
+    let i = 0
 
     return <div className={`${styles.user_info} element`}>
         <div className={styles.wrapper}>
-            <h1 className={styles.full_name}>{fullName}</h1>
+            {/*props.fullname*/}
+            <h1 className={styles.full_name}>{props.fullName}</h1>
+            {/*props.status*/}
             <span className={styles.status}>{props.status || 'set a status message'}</span>
             <div className={styles.location}>
                 <div className={styles.location_item}>
@@ -24,9 +24,10 @@ const UserInfo = (props) => {
             <span className={styles.contacts}>Contacts</span>
             <div className={styles.contacts_list}>
 
+                {/*props.contacts*/}
                 {/* Object.keys возвращает массив свойств, далее map возвращает новый массив */}
-                {Object.keys(contacts).map(key => {
-                    return <Contact title={key} value={contacts[key]}/>
+                {Object.keys(props.contacts).map(key => {
+                    return <Contact key={i++} title={key} value={props.contacts[key]}/>
                 })}
 
             </div>
@@ -43,12 +44,4 @@ const Contact = (props) => {
     </div>
 }
 
-
-const mapStateToProps = (state) => {
-    return {
-        profile: state.profilePage.profile,
-        status: state.profilePage.status
-    }
-}
-
-export default connect(mapStateToProps, null)(UserInfo)
+export default UserInfo

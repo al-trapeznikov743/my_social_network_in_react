@@ -1,4 +1,6 @@
-import {getProfileState} from "./stateSections/profileSection"
+import {ADD_POST, DELETE_POST, SET_STATUS, SET_USER_PROFILE} from '../types'
+import {getProfileState} from './stateSections/profileSection'
+import {getLastChild} from '../../utils/arrayManipulations'
 
 const profile = getProfileState()
 
@@ -12,5 +14,42 @@ const initialState = {
 }
 
 export const profileReducer = (state = initialState, action) => {
-        return state
+    switch(action.type) {
+        case ADD_POST: {
+            let postId
+            if(state.posts.length !== 0) {
+                postId = getLastChild(state.posts).id+1
+            } else {
+                postId = 1
+            }
+            const newPost = {
+                id: postId,
+                username: 'Rick Sanchez',
+                message: action.newPostValue
+            }
+            return {
+                ...state,
+                posts: [...state.posts, newPost]
+            }
+        }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: [...state.posts.filter(post => post.id !== action.postId)]
+            }
+        }
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            }
+        }
+        case SET_STATUS: {
+            return {
+                ...state,
+                status: action.status
+            }
+        }
+        default: return state
+    }
 }

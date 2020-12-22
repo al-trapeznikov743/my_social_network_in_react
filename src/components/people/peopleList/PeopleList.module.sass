@@ -1,8 +1,17 @@
 @import '../../../sass/general/variables'
 @import '../../../sass/general/mixins'
 
+
+// for intersectionObserver
+.list_wrapper
+.detector
+    height: 3px
+    background-color: red
+    z-index: 1
+
 .list
     grid-area: item-wr
+    width: 99%
 .item
     @include flexVCenterBetween
     align-items: normal
@@ -15,12 +24,12 @@
     margin-left: 13px
     margin-top: 10px
 .photo
-  @include peoplePhoto
+    @include peoplePhoto
 .username
-  @include userName
-  margin-bottom: 3px
+    @include userName
+    margin-bottom: 3px
 .status
     color: $minorColor
 .buttons
-  display: flex
-  align-items: flex-end
+    display: flex
+    align-items: flex-end
