@@ -1,5 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
 import styles from './ProfileInfo.module.sass'
 
 const ProfileInfo = (props) => {
@@ -38,10 +37,4 @@ const ProfileInfo = (props) => {
     </div>
 }
 
-const mapStateToProps = (state) => {
-    return {
-        photo: state.profilePage.profile.photos.large
-    }
-}
-
-export default connect(mapStateToProps, null)(ProfileInfo)
+export default ProfileInfo

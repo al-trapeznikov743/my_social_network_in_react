@@ -1,5 +1,5 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import photoSmall from '../../../img/withoutPhoto/small.jpg'
 import styles from './Post.module.sass'
 
 
@@ -7,9 +7,12 @@ const Post = (props) => {
     return <div className={`${styles.post}`}>
         {props.posts.map(post => {
             return <PostItem
+                key={post.id}
+                postId={post.id}
                 username={post.username}
                 message={post.message}
-                photo={props.photo}
+                photo={props.photo || photoSmall}
+                deletePost={props.deletePost}
             />
         })}
     </div>
@@ -37,16 +40,9 @@ const PostItem = (props) => {
                     <i className={`fas fa-share ${styles.icon} interaction`}></i>
                 </div>
             </div>
-            <button>Delete</button>
+            <button onClick={() => {props.deletePost(props.postId)}}>Delete</button>
         </div>
     </div>
 }
 
-const mapStateToProps = (state) => {
-    return {
-        photo: state.profilePage.profile.photos.small,
-        posts: state.profilePage.posts
-    }
-}
-
-export default connect(mapStateToProps, null)(Post)
+export default Post

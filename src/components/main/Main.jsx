@@ -10,7 +10,7 @@ const Main = () => {
     return <>
         <div className={styles.main}>
             <Sidebar />
-            <Route path='/profile' render={() => <Profile/>}/>
+            <Route path='/profile/:userId?' render={() => <Profile/>}/>
             <Route path='/people' render={() => <People/>}/>
             <Route path='/messenger' render={() => <Messenger/>}/>
         </div>

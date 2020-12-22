@@ -1,39 +1,44 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {follow, unfollow} from '../../../redux/actions/peopleActions'
+import {NavLink} from 'react-router-dom'
 import styles from './PeopleList.module.sass'
+import withPhoto from '../../../img/withoutPhoto/small.jpg'
+import Paginator from '../../common/Paginator'
 
 const PeopleList = (props) => {
-    return <div className={styles.list}>
-        {
-            props.users.map(user => {
-                return <PeopleListItem
-                    id={user.id}
-                    photo={user.photos.small}
-                    name={user.name}
-                    status={user.status}
-                    followed={user.followed}
-                    follow={props.follow}
-                    unfollow={props.unfollow}
-                />
-            })
-        }
+
+    return <div className={styles.list_wrapper}>
+        <div className={styles.list}>
+            <Paginator
+                //totalCount={props.totalCount}
+                pageSize={props.pageSize}
+                currentPage={props.currentPage}
+                onPageChanged={props.onPageChanged}
+            />
+            {
+                props.users.map(user => {
+                    return <PeopleListItem
+                        key={user.id}
+                        id={user.id}
+                        photo={user.photos.small}
+                        name={user.name}
+                        status={user.status}
+                        followed={user.followed}
+                        toggleFollow={props.toggleFollow}
+                    />
+                })
+            }
+        </div>
+        <div className={styles.detector}></div>
     </div>
 }
 
 const PeopleListItem = (props) => {
 
-    const toggleFollow = (followed) => {
-        if(followed) {
-            props.unfollow(props.id)
-        } else {
-            props.follow(props.id)
-        }
-    }
-
     return <div className={`${styles.item} element`}>
         <div className={styles.descr}>
-            <img className={styles.photo} src={props.photo} alt="img"/>
+            <NavLink to={`/profile/${props.id}`}>
+                <img className={styles.photo} src={props.photo || withPhoto} alt="img"/>
+            </NavLink>
             <div className={styles.wrapper}>
                 <span className={styles.username}>{props.name}</span>
                 <span className={styles.status}>{props.status}</span>
@@ -42,7 +47,7 @@ const PeopleListItem = (props) => {
         <div className={styles.buttons}>
 
             <button
-                onClick={() => {toggleFollow(props.followed)}}
+                onClick={() => {props.toggleFollow(props.followed, props.id)}}
             >{props.followed ? 'Unfollow' : 'Follow'}</button>
             <button>Message</button>
 
@@ -50,16 +55,4 @@ const PeopleListItem = (props) => {
     </div>
 }
 
-
-
-const mapStateToProps = (state) => {
-    return {
-        users: state.peoplePage.users
-    }
-}
-
-
-export default connect(mapStateToProps, {
-    follow,
-    unfollow
-})(PeopleList)
+export default PeopleList
