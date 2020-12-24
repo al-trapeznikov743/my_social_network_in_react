@@ -1,4 +1,4 @@
-import {ADD_POST, DELETE_POST, SET_STATUS, SET_USER_PROFILE} from '../types'
+import {ADD_POST, DELETE_POST, SET_AVA_SUCCESS, SET_STATUS, SET_USER_PROFILE} from '../types'
 import {getProfileState} from './stateSections/profileSection'
 import {getLastChild} from '../../utils/arrayManipulations'
 
@@ -48,6 +48,12 @@ export const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 status: action.status
+            }
+        }
+        case SET_AVA_SUCCESS: {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
             }
         }
         default: return state

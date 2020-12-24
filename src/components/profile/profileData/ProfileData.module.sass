@@ -14,7 +14,11 @@
 .status
     font-size: 13px
     color: $minorColor
-.location
+    width: 50%
+.statusField
+    @include inputInitial
+    color: $minorColor
+.info_wrapper
     display: flex
     flex-direction: column
     margin-top: 15px
@@ -24,10 +28,12 @@
     &_value
         width: 30%
 
-.location,
+.info_wrapper,
 .contacts
     border-top: 1px solid $minorColor
     padding-top: 15px
+.about_me
+    width: 400px
 .contacts
     margin-top: 10px
     margin-bottom: 10px
@@ -39,3 +45,16 @@
         color: $minorColor
     &_value
         width: 30%
+
+.editActivate
+    display: flex
+    align-items: center
+    justify-content: center
+    color: $minorColor
+    &:hover
+        color: $appColor
+        cursor: pointer
+    &_wrapper
+        display: flex
+        align-items: center
+        justify-content: center

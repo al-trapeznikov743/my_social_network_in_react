@@ -1,5 +1,11 @@
-import {profileAPI} from "../../api/api"
-import {ADD_POST, DELETE_POST, SET_STATUS, SET_USER_PROFILE} from "../types"
+import {stopSubmit} from 'redux-form'
+import {profileAPI} from '../../api/api'
+import {
+    ADD_POST,
+    DELETE_POST,
+    SET_AVA_SUCCESS,
+    SET_STATUS,
+    SET_USER_PROFILE} from '../types'
 
 
 
@@ -21,10 +27,16 @@ const setUserProfile = (profile) => {
         profile
     }
 }
-export const setStatus = (status) => {
+const setStatus = (status) => {
     return {
         type: SET_STATUS,
         status
+    }
+}
+const setAvatar = (photos) => {
+    return {
+        type: SET_AVA_SUCCESS,
+        photos
     }
 }
 
@@ -39,5 +51,36 @@ export const getStatus = (userId) => {
     return async (dispatch) => {
         const response = await profileAPI.getStatus(userId)
         dispatch(setStatus(response.data))
+    }
+}
+export const updateStatus = (status) => {
+    return async (dispatch) => {
+        const response = await profileAPI.updateStatus(status)
+        if(response.data.resultCode === 0) {
+            dispatch(setStatus(status))
+        }
+    }
+}
+export const updateAvatar = (file) => {
+    return async (dispatch) => {
+        const response = await profileAPI.updateAvatar(file)
+        if(response.data.resultCode === 0) {
+            dispatch(setAvatar(response.data.data.photos))
+        }
+    }
+}
+export const updateProfile = (profile) => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.userId
+        const response = await profileAPI.updateProfile(profile)
+        if(response.data.resultCode === 0) {
+            dispatch(getProfile(userId))
+        } else {
+            const errorMessage = response.data.messages.length > 0
+                ? response.data.messages[0]
+                : 'Some error'
+                dispatch(stopSubmit('editProfile', {_error: errorMessage}))
+            return Promise.reject(errorMessage)
+        }
     }
 }

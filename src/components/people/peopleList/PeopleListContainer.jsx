@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
-import {follow, unfollow, getUsers} from '../../../redux/actions/peopleActions'
+import {updateFollow, getUsers} from '../../../redux/actions/peopleActions'
 import PeopleList from './PeopleList'
 
 const PeopleListContainer = (props) => {
@@ -14,13 +14,13 @@ const PeopleListContainer = (props) => {
         props.getUsers(pageNumber, props.pageSize)
     }
 
-    const toggleFollow = (followed, id) => {
+    /* const toggleFollow = (followed, id) => {
         if(followed) {
             props.unfollow(id)
         } else {
             props.follow(id)
         }
-    }
+    } */
 
     return <PeopleList
         users={props.users}
@@ -28,7 +28,8 @@ const PeopleListContainer = (props) => {
         pageSize={props.pageSize}
         totalCount={props.totalCount}
         onPageChanged={onPageChanged}
-        toggleFollow={toggleFollow}
+        followingInProgress={props.followingInProgress}
+        updateFollow={updateFollow}
     />
 }
 
@@ -37,13 +38,13 @@ const mapStateToProps = (state) => {
         users: state.peoplePage.users,
         currentPage: state.peoplePage.currentPage,
         pageSize: state.peoplePage.pageSize,
-        totalCount: state.peoplePage.totalCount
+        totalCount: state.peoplePage.totalCount,
+        followingInProgress: state.peoplePage.followingInProgress
     }
 }
 
 
 export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    getUsers
+    getUsers,
+    updateFollow
 })(PeopleListContainer)

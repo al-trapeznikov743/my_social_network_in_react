@@ -1,7 +1,9 @@
 //import {GET_CAPTCHA_URL_SUCCESS, SET_USER_DATA} from '../types'
 
+import {SET_USER_DATA} from '../types'
+
 const initialState = {
-    userId: 12619,
+    userId: null,
     email: null,
     login: null,
     isAuth: false,
@@ -10,5 +12,13 @@ const initialState = {
 }
 
 export const authReducer = (state = initialState, action) => {
-    return state
+    switch (action.type) {
+        case SET_USER_DATA: {
+            return {
+                ...state,
+                ...action.payload
+            }
+        }
+        default: return state
+    }
 }

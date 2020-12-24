@@ -10,9 +10,21 @@ const instance = axios.create({
 })
 
 
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`)
+    }
+}
+
 export const userAPI = {
     getUsers(currentPage = 1, pageSize = 15) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`)
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`)
     }
 }
 
@@ -22,5 +34,16 @@ export const profileAPI = {
     },
     getStatus(userId) {
         return instance.get(`profile/status/${userId}`)
+    },
+    updateStatus(status) {
+        return instance.put(`profile/status`, {status})
+    },
+    updateAvatar(file) {
+        const formData = new FormData()
+        formData.append('image', file)
+        return instance.put(`profile/photo`, formData)
+    },
+    updateProfile(profile) {
+        return instance.put(`profile`, profile)
     }
 }

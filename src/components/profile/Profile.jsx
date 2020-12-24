@@ -2,9 +2,16 @@ import React from 'react'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
-import {addPost, deletePost, getProfile, getStatus} from '../../redux/actions/profileActions'
+import {
+    addPost,
+    deletePost,
+    getProfile,
+    getStatus,
+    updateStatus,
+    updateAvatar,
+    updateProfile} from '../../redux/actions/profileActions'
 import ProfileInfo from './profileInfo/ProfileInfo'
-import UserInfo from './userInfo/UserInfo'
+import ProfileData from './profileData/ProfileData'
 import AddPost from './addPost/AddPost'
 import Post from './post/Post'
 import styles from './Profile.module.sass'
@@ -36,7 +43,15 @@ class Profile extends React.Component {
 
     render() {
 
-        const {photos, fullName, contacts} = this.props.profile
+        const {
+            aboutMe,
+            contacts,
+            fullName,
+            lookingForAJob,
+            lookingForAJobDescription,
+            photos} = this.props.profile
+
+        const isOwner = !this.props.match.params.userId
 
         const photoSmall = photos.small
         const photoLarge = photos.large
@@ -44,11 +59,19 @@ class Profile extends React.Component {
         return <div className={styles.profile}>
             <ProfileInfo
                 photo={photoLarge}
+                isOwner={isOwner}
+                updateAvatar={this.props.updateAvatar}
             />
-            <UserInfo
+            <ProfileData
                 fullName={fullName}
                 status={this.props.status}
                 contacts={contacts}
+                aboutMe={aboutMe}
+                updateStatus={this.props.updateStatus}
+                updateProfile={this.props.updateProfile}
+                isOwner={isOwner}
+                lookingForAJob={lookingForAJob}
+                lookingForAJobDescription={lookingForAJobDescription}
             />
             <AddPost
                 addPost={this.props.addPost}
@@ -78,6 +101,9 @@ export default compose(
     connect(mapStateToProps, {
         getProfile,
         getStatus,
+        updateStatus,
+        updateAvatar,
+        updateProfile,
         addPost,
         deletePost,
     }),
