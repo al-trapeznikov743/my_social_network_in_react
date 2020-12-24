@@ -23,12 +23,12 @@ const PeopleList = (props) => {
                         name={user.name}
                         status={user.status}
                         followed={user.followed}
-                        toggleFollow={props.toggleFollow}
+                        followingInProgress={props.followingInProgress}
+                        updateFollow={props.updateFollow}
                     />
                 })
             }
         </div>
-        <div className={styles.detector}></div>
     </div>
 }
 
@@ -45,9 +45,9 @@ const PeopleListItem = (props) => {
             </div>
         </div>
         <div className={styles.buttons}>
-
             <button
-                onClick={() => {props.toggleFollow(props.followed, props.id)}}
+                disabled={props.followingInProgress.some(id => id === props.id)}
+                onClick={() => {props.updateFollow(props.id, props.followed)}}
             >{props.followed ? 'Unfollow' : 'Follow'}</button>
             <button>Message</button>
 

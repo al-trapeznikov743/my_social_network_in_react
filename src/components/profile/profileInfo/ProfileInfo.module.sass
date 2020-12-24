@@ -4,6 +4,7 @@
 .info
     grid-area: info
 .wrapper
+    position: relative
     display: flex
     flex-direction: column
     align-items: center
@@ -12,6 +13,41 @@
     margin-top: 10px
 .photo
     @include profilePhoto
+    margin-top: 13px
+.inputFile_wrapper
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: $elemBackgroundColor
+    width: 36px
+    height: 36px
+    border: 1px solid $minorColor
+    border-radius: 50%
+    top: 130px
+    right: 33px
+.inputFile
+    width: 0.1px
+    height: 0.1px
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    z-index: -1
+.inputLabel
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+    width: 36px
+    height: 36px
+    &:hover
+        cursor: pointer
+.changePhotoIcon
+    font-size: 20px
+    color: $userNameColor
+    opacity: 0.9
+    &:hover
+        cursor: pointer
 .place
     display: flex
     width: 119px
