@@ -4,6 +4,8 @@ import withPhoto from '../../../img/withoutPhoto/large.jpg'
 
 const ProfileInfo = (props) => {
 
+    const postsCounter = props.posts.length
+
     const changeMainPhoto = (e) => {
         if(e.target.files.length) {
             props.updateAvatar(e.target.files[0])
@@ -30,7 +32,7 @@ const ProfileInfo = (props) => {
             <div className={styles.activity}>
                 <div className={styles.value}>
                     <span className={styles.prop}>Posts</span>
-                    <span>7</span>
+                    <span>{postsCounter}</span>
                 </div>
                 <div className={styles.value}>
                     <span className={styles.prop}>Followers</span>

@@ -1,5 +1,5 @@
 import React from 'react'
-import AddPostForm from '../../forms/AddPostForm'
+import AddPostForm from '../../forms/addPostForm/AddPostForm'
 import styles from './AddPost.module.sass'
 
 const AddPost = (props) => {

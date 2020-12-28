@@ -17,5 +17,8 @@ export const SET_USERS_TOTAL_COUNT = 'SET_USERS_TOTAL_COUNT'
 export const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 export const TOGGLE_IS_FOLLOWING = 'TOGGLE_IS_FOLLOWING'
 
+// messengerReducer
+export const SEND_MESSAGE = 'SEND_MESSAGE'
+
 // authReducer
 export const SET_USER_DATA = 'SET_USER_DATA'

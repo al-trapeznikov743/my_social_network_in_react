@@ -8,11 +8,10 @@ import './css/solid.min.css'
 import './css/bootstrap-grid.min.css'
 import './sass/general/_general.sass'
 import styles from './components/header/Header.module.sass'
-//import Preloader from './components/common/preloader/Preloader'
+import Preloader from './components/common/preloader/Preloader'
 import Header from './components/header/Header'
 import Main from './components/main/Main'
 import store from './redux/store'
-//import Login from './components/login/Login'
 
 
 
@@ -34,9 +33,9 @@ class App extends React.Component {
     }
 
     render() {
-        /* if(!this.props.initialized) {
+        if(!this.props.init) {
             return <Preloader />
-        } */
+        }
         return <div className='app'>
             <div className={styles.pageHeader}>
                 <div className='container'>
@@ -47,7 +46,6 @@ class App extends React.Component {
                 <div className='container'>
                     <Main />
                 </div>
-                {/* <Login /> */}
             </div>
         </div>
     }

@@ -44,7 +44,7 @@ export const peopleReducer = (state = initialState, action) => {
         case SET_USERS: {
             return {
                 ...state,
-                users: action.users
+                users: [...state.users, ...action.users]
             }
         }
         case SET_CURRENT_PAGE: {

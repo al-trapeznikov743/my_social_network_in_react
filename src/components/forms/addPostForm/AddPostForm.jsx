@@ -1,6 +1,6 @@
 import {Field, reduxForm} from 'redux-form'
-import {required} from './validators'
-import styles from '../profile/addPost/AddPost.module.sass'
+import {required} from '../validators'
+import styles from '../../profile/addPost/AddPost.module.sass'
 
 
 const AddPostForm = (props) => {

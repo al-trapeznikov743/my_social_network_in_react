@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import styles from './Sidebar.module.sass'
 
 const Sidebar = () => {
-    return <div className={styles.sidebar}>
+    return <div className={`${styles.sidebar} element`}>
         <nav className={styles.ul}>
             <NavLink to='/profile' className={styles.link}>
                 <div className='link_icon'>
@@ -26,7 +26,7 @@ const Sidebar = () => {
                 <span>Messenger</span>
             </NavLink>
 
-            <NavLink to='#' className={styles.link}>
+            <NavLink to='/login' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-newspaper'></i>
                 </div>
