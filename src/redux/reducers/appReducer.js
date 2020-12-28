@@ -2,7 +2,7 @@ import {INITIALIZED_SUCCESS} from '../types'
 
 
 const initialState = {
-    initialized: false
+    initialized: true
 }
 
 export const appReducer = (state = initialState, action) => {

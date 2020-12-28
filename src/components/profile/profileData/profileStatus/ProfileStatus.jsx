@@ -16,7 +16,7 @@ const ProfileStatus = (props) => {
 
     const toggleEditMode = (e) => {
         if(editMode) {
-            e.preventDefault()
+            //e.preventDefault()
             props.updateStatus(status)
             setEditMode(false)
             return undefined
@@ -53,12 +53,10 @@ const StatusForm = (props) => {
             className={props.styles.statusField}
             autoFocus={true}
             onChange={props.onStatusChange}
+            onBlur={props.toggleEditMode}
             value={props.status}
         />
-        <button onClick={props.toggleEditMode}>Save</button>
     </form>
 }
-
-
 
 export default ProfileStatus

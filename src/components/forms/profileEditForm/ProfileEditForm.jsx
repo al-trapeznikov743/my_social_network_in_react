@@ -1,6 +1,6 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {required} from './validators'
+import {required} from '../validators'
 import styles from './ProfileEditForm.module.sass'
 
 
@@ -65,7 +65,8 @@ const ProfileEditForm = (props) => {
                 })}
 
             </div>
-            <button onClick={props.toggleEditMode}>Edit</button>
+            <button className={styles.button}>Edit</button>
+            <button onClick={props.toggleEditMode}>Cancel</button>
         </div>
     </form>
 }

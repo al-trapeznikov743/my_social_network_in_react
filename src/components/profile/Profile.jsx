@@ -10,6 +10,8 @@ import {
     updateStatus,
     updateAvatar,
     updateProfile} from '../../redux/actions/profileActions'
+import Preloader from '../common/preloader/Preloader'
+import Sidebar from '../main/sidebar/Sidebar'
 import ProfileInfo from './profileInfo/ProfileInfo'
 import ProfileData from './profileData/ProfileData'
 import AddPost from './addPost/AddPost'
@@ -32,8 +34,7 @@ class Profile extends React.Component {
         if(!userId) {
             userId = this.props.autorizeId
             if(!userId) {
-                //this.props.history.push('/login')
-                console.log('Авторизируйся, гандон!')
+                this.props.history.push('/login')
                 return undefined
             }
         }
@@ -42,7 +43,9 @@ class Profile extends React.Component {
     }
 
     render() {
-
+        if(!this.props.autorizeId) {
+            return <Preloader />
+        }
         const {
             aboutMe,
             contacts,
@@ -56,31 +59,35 @@ class Profile extends React.Component {
         const photoSmall = photos.small
         const photoLarge = photos.large
 
-        return <div className={styles.profile}>
-            <ProfileInfo
-                photo={photoLarge}
-                isOwner={isOwner}
-                updateAvatar={this.props.updateAvatar}
-            />
-            <ProfileData
-                fullName={fullName}
-                status={this.props.status}
-                contacts={contacts}
-                aboutMe={aboutMe}
-                updateStatus={this.props.updateStatus}
-                updateProfile={this.props.updateProfile}
-                isOwner={isOwner}
-                lookingForAJob={lookingForAJob}
-                lookingForAJobDescription={lookingForAJobDescription}
-            />
-            <AddPost
-                addPost={this.props.addPost}
-            />
-            <Post
-                photo={photoSmall}
-                posts={this.props.posts}
-                deletePost={this.props.deletePost}
-            />
+        return <div className='wrapper'>
+                <Sidebar />
+                <div className={styles.profile}>
+                    <ProfileInfo
+                        photo={photoLarge}
+                        isOwner={isOwner}
+                        updateAvatar={this.props.updateAvatar}
+                        posts={this.props.posts}
+                    />
+                    <ProfileData
+                        fullName={fullName}
+                        status={this.props.status}
+                        contacts={contacts}
+                        aboutMe={aboutMe}
+                        updateStatus={this.props.updateStatus}
+                        updateProfile={this.props.updateProfile}
+                        isOwner={isOwner}
+                        lookingForAJob={lookingForAJob}
+                        lookingForAJobDescription={lookingForAJobDescription}
+                    />
+                    <AddPost
+                        addPost={this.props.addPost}
+                    />
+                    <Post
+                        photo={photoSmall}
+                        posts={this.props.posts}
+                        deletePost={this.props.deletePost}
+                    />
+            </div>
         </div>
     }
 }

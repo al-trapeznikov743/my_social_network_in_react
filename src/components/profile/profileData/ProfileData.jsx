@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
 import ProfileStatus from './profileStatus/ProfileStatus'
-import ProfileEditForm from './../../forms/ProfileEditForm'
+import ProfileEditForm from './../../forms/profileEditForm/ProfileEditForm'
 import styles from './ProfileData.module.sass'
 
 const ProfileData = (props) => {
 
     const [editMode, setEditMode] = useState(false)
 
-    //const editMode = true
     const toggleEditMode = (e) => {
         if(editMode) {
             e.preventDefault()
@@ -29,11 +28,13 @@ const ProfileData = (props) => {
                 lookingForAJobDescription={props.lookingForAJobDescription}
                 aboutMe={props.aboutMe}
                 contacts={props.contacts}
+                toggleEditMode={toggleEditMode}
                 onSubmit={onSubmit}
             />
             : <ProfileDataContainer
                 fullName={props.fullName}
                 status={props.status}
+                updateStatus={props.updateStatus}
                 lookingForAJob={props.lookingForAJob}
                 lookingForAJobDescription={props.lookingForAJobDescription}
                 aboutMe={props.aboutMe}

@@ -4,10 +4,11 @@
 
 // for intersectionObserver
 .list_wrapper
+    position: relative
 
 .list
     grid-area: item-wr
-    width: 99%
+    min-height: 1200px
 .item
     @include flexVCenterBetween
     align-items: normal
@@ -29,3 +30,5 @@
 .buttons
     display: flex
     align-items: flex-end
+
+.detector

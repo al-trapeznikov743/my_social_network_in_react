@@ -1,19 +1,12 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {NavLink} from 'react-router-dom'
 import styles from './PeopleList.module.sass'
 import withPhoto from '../../../img/withoutPhoto/small.jpg'
-import Paginator from '../../common/Paginator'
 
 const PeopleList = (props) => {
 
     return <div className={styles.list_wrapper}>
         <div className={styles.list}>
-            <Paginator
-                //totalCount={props.totalCount}
-                pageSize={props.pageSize}
-                currentPage={props.currentPage}
-                onPageChanged={props.onPageChanged}
-            />
             {
                 props.users.map(user => {
                     return <PeopleListItem
@@ -29,6 +22,7 @@ const PeopleList = (props) => {
                 })
             }
         </div>
+        <div ref={props.onPageChangedRef} className={styles.detector}></div>
     </div>
 }
 
@@ -46,7 +40,7 @@ const PeopleListItem = (props) => {
         </div>
         <div className={styles.buttons}>
             <button
-                disabled={props.followingInProgress.some(id => id === props.id)}
+                //disabled={props.followingInProgress.some(id => id === props.id)}
                 onClick={() => {props.updateFollow(props.id, props.followed)}}
             >{props.followed ? 'Unfollow' : 'Follow'}</button>
             <button>Message</button>
@@ -55,4 +49,4 @@ const PeopleListItem = (props) => {
     </div>
 }
 
-export default PeopleList
+export default memo(PeopleList)

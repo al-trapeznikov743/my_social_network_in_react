@@ -1,13 +1,20 @@
 import React from 'react'
 import styles from './Dialog.module.sass'
 import Message from './message/Message'
-import SendMessage from './sendMessage/SendMessage'
+import SendMessageForm from '../../forms/sendMessageForm/SendMessageForm'
 
-const Dialog = () => {
+const Dialog = (props) => {
+
+    const onSendMessage = (value) => {
+        props.sendMessage(value.newMessage)
+    }
+
     return <div className={`${styles.dialog} element`}>
         <Message />
-        <Message reverse={true}/>
-        <SendMessage />
+        {props.messages.map(message => {
+            return <Message key={message.id} reverse={true} message={message.message}/>
+        })}
+        <SendMessageForm onSubmit={onSendMessage}/>
     </div>
 }
 

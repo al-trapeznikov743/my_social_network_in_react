@@ -19,6 +19,21 @@
     opacity: 0.9
 .tools
     @include flexVCenterBetween
+    position: relative
+    &_menu
+        position: absolute
+        display: flex
+        flex-direction: column
+        padding: 10px
+        left: 530px
+        top: 51px
+    &_logout
+        border-top: 1px solid $minorColor
+        margin-top: 5px
+        padding-top: 4px
+        &:hover
+            cursor: pointer
+
 .search_img
     position: relative
     margin-right: -27px
@@ -37,5 +52,13 @@
 .welcome
     @include flexVCenterBetween
     margin-left: 50px
+    padding: 5px
+    height: 50px
+    &:hover
+        background-color: $appBackgroundColor
+        cursor: pointer
 .pr_photo
     @include iconPhoto
+    width: 35px
+    height: 35px
+    margin: 0 7px 0 7px
