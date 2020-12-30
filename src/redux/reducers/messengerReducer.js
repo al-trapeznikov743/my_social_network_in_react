@@ -11,7 +11,7 @@ const initialState = {
     ],
     messages: [
         {id:1, message: 'Hi'},
-        {id:2, message: 'How is your it-kamasutra'},
+        {id:2, message: 'Like your nothing'},
         {id:3, message: 'Yo'}
     ]
 }

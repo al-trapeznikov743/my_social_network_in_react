@@ -1,4 +1,4 @@
-import {Field, reduxForm} from 'redux-form'
+import {reset, Field, reduxForm} from 'redux-form'
 import {required} from '../validators'
 import styles from '../../profile/addPost/AddPost.module.sass'
 
@@ -40,5 +40,11 @@ const AddPostForm = (props) => {
     </form>
 }
 
+const afterSubmit = (result, dispatch) => {
+    dispatch(reset('addPost'))
+}
 
-export default reduxForm({form: 'addPost'})(AddPostForm)
+export default reduxForm({
+    form: 'addPost',
+    onSubmitSuccess: afterSubmit
+})(AddPostForm)

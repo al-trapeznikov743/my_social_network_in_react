@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {
     addPost,
+    setPost,
     deletePost,
     getProfile,
     getStatus,
@@ -81,6 +82,7 @@ class Profile extends React.Component {
                     />
                     <AddPost
                         addPost={this.props.addPost}
+                        setPost={this.props.setPost}
                     />
                     <Post
                         photo={photoSmall}
@@ -112,6 +114,7 @@ export default compose(
         updateAvatar,
         updateProfile,
         addPost,
+        setPost,
         deletePost,
     }),
     withRouter
