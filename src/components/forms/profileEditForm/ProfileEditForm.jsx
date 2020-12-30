@@ -1,5 +1,5 @@
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
+import {Field, reduxForm, reset} from 'redux-form'
 import {required} from '../validators'
 import styles from './ProfileEditForm.module.sass'
 
@@ -83,4 +83,12 @@ const Contact = (props) => {
     </div>
 }
 
-export default reduxForm({form: 'editProfile'})(ProfileEditForm)
+
+const afterSubmit = (result, dispatch) => {
+    dispatch(reset('editProfile'))
+}
+
+export default reduxForm({
+    form: 'editProfile',
+    onSubmitSuccess: afterSubmit
+})(ProfileEditForm)

@@ -1,4 +1,4 @@
-import {stopSubmit} from 'redux-form'
+import {reset, stopSubmit} from 'redux-form'
 import {profileAPI} from '../../api/api'
 import {
     ADD_POST,
@@ -41,6 +41,30 @@ const setAvatar = (photos) => {
 }
 
 // thunk-creators
+export const setPost = (text) => {
+    return async (dispatch) => {
+        let successPromise = await new Promise(() => {
+            dispatch(addPost(text))
+            console.log('setPost')
+        })
+        successPromise.then(() => {
+            console.log('reset')
+            dispatch(reset('addPost'))
+        })
+    }
+}
+
+
+/* export const initializeApp = () => {
+    return (dispatch) => {
+        let successPromise = dispatch(getAuthUserData())
+        successPromise.then(() => {
+            dispatch(initializedSuccess())
+        })
+    }
+} */
+
+
 export const getProfile = (userId) => {
     return async (dispatch) => {
         const response = await profileAPI.getProfile(userId)

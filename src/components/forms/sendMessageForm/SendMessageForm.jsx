@@ -1,5 +1,5 @@
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
+import {Field, reduxForm, reset} from 'redux-form'
 import {required} from '../validators'
 import styles from './SendMessageForm.module.sass'
 
@@ -37,4 +37,12 @@ const SendMessageForm = (props) => {
     </form>
 }
 
-export default reduxForm({form: 'sendMessage'})(SendMessageForm)
+
+const afterSubmit = (result, dispatch) => {
+    dispatch(reset('sendMessage'))
+}
+
+export default reduxForm({
+    form: 'sendMessage',
+    onSubmitSuccess: afterSubmit
+})(SendMessageForm)

@@ -32,7 +32,6 @@ const PeopleListContainer = (props) => {
                 return undefined
             }
             props.getUsers(nextPage, props.pageSize)
-            console.log('Подгрузка')
         }
     }
 
@@ -44,6 +43,7 @@ const PeopleListContainer = (props) => {
         threshold: 0.1
     }
 
+    // eslint-disable-next-line
     const onPageChangedRef = useCallback(node => {
         if(observer.current) {
             observer.current.disconnect()

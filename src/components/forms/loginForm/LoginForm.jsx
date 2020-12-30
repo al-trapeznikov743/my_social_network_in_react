@@ -1,5 +1,5 @@
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
+import {Field, reduxForm, reset} from 'redux-form'
 import {required} from '../validators'
 import styles from './LoginForm.module.sass'
 
@@ -43,4 +43,11 @@ const LoginForm = (props) => {
     </div>
 }
 
-export default reduxForm({form: 'login'})(LoginForm)
+const afterSubmit = (result, dispatch) => {
+    dispatch(reset('login'))
+}
+
+export default reduxForm({
+    form: 'login',
+    onSubmitSuccess: afterSubmit
+})(LoginForm)
