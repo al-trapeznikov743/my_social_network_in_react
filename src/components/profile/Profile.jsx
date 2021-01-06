@@ -1,17 +1,15 @@
 import React from 'react'
-import {withRouter} from 'react-router-dom'
+import {Redirect, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {compose} from 'redux'
 import {
     addPost,
-    setPost,
     deletePost,
     getProfile,
     getStatus,
     updateStatus,
     updateAvatar,
     updateProfile} from '../../redux/actions/profileActions'
-import Preloader from '../common/preloader/Preloader'
 import Sidebar from '../main/sidebar/Sidebar'
 import ProfileInfo from './profileInfo/ProfileInfo'
 import ProfileData from './profileData/ProfileData'
@@ -20,6 +18,7 @@ import Post from './post/Post'
 import styles from './Profile.module.sass'
 
 class Profile extends React.Component {
+    
 
     componentDidMount() {
         this.refreshProfile()
@@ -44,8 +43,8 @@ class Profile extends React.Component {
     }
 
     render() {
-        if(!this.props.autorizeId) {
-            return <Preloader />
+        if(!this.props.isAuth) {
+            return <Redirect to='/login' />
         }
         const {
             aboutMe,
@@ -82,7 +81,6 @@ class Profile extends React.Component {
                     />
                     <AddPost
                         addPost={this.props.addPost}
-                        setPost={this.props.setPost}
                     />
                     <Post
                         photo={photoSmall}
@@ -101,7 +99,8 @@ const mapStateToProps = (state) => {
         profile: state.profilePage.profile,
         status: state.profilePage.status,
         posts: state.profilePage.posts,
-        autorizeId: state.auth.userId
+        autorizeId: state.auth.userId,
+        isAuth: state.auth.isAuth
     }
 }
 
@@ -114,7 +113,6 @@ export default compose(
         updateAvatar,
         updateProfile,
         addPost,
-        setPost,
         deletePost,
     }),
     withRouter

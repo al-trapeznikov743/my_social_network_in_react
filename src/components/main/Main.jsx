@@ -1,12 +1,16 @@
 import React from 'react'
-import {Redirect, Route, Switch} from 'react-router-dom'
+import {connect} from 'react-redux'
+import {Redirect, Route, Switch, withRouter} from 'react-router-dom'
+import {compose} from 'redux'
 import Login from '../login/Login'
 import Profile from '../profile/Profile'
 import People from '../people/People'
 import Messenger from '../messenger/Messenger'
+import ScrollToTop from '../common/scrollToTop/ScrollToTop'
 
-const Main = () => {
+const Main = (props) => {
     return <>
+        <ScrollToTop/>
         <Switch>
             <Route exact path='/' render={() => <Redirect to='/profile'/>} />
             <Route path='/login' render={() => <Login/>}/>
@@ -18,4 +22,14 @@ const Main = () => {
     </>
 }
 
-export default Main
+
+const mapStateToProps = (state) => {
+    return {
+        isAuth: state.auth.isAuth
+    }
+}
+
+export default compose(
+    connect(mapStateToProps, null),
+    withRouter
+)(Main)

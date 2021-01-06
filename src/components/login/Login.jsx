@@ -8,10 +8,6 @@ import styles from './Login.module.sass'
 
 const Login = (props) => {
 
-    const onSubmit = (formData) => {
-        const {email, password, rememberMe, captcha} = formData
-        props.login(email, password, rememberMe, captcha)
-    }
     if(props.isAuth) {
         return <Redirect to='/profile' />
     }
@@ -21,7 +17,7 @@ const Login = (props) => {
             <div className='container'>
                 <div className={styles.login_wrapper}>
                     <Recent />
-                    <LoginForm onSubmit={onSubmit} />
+                    <LoginForm login={props.login} />
                 </div>
             </div>
         </div>

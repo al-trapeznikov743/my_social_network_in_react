@@ -15,8 +15,9 @@ const ProfileData = (props) => {
         }
         setEditMode(true)
     }
-    const onSubmit = async (formData) => {
+    const onSubmit = async (formData, {setSubmitting}) => {
         await props.updateProfile(formData)
+        setSubmitting(false)
         setEditMode(false)
     }
 
