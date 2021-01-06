@@ -68,7 +68,7 @@ export const getUsers = (pageNumber, pageSize) => {
 }
 
 
-
+// решить с follow/unfollow
 export const updateFollow = (userId, followed) => {
     if (followed) {
         console.log('unfollow')

@@ -1,53 +1,62 @@
 import React from 'react'
-import {Field, reduxForm, reset} from 'redux-form'
-import {required} from '../validators'
+import {Formik, Form, Field} from 'formik'
 import styles from './LoginForm.module.sass'
 
+
+
+const LoginFormValidate = (value) => {
+    const errors = {}
+    return errors
+}
+
 const LoginForm = (props) => {
+    const onSubmit = (formData, {setSubmitting}) => {
+        const {email, password, rememberMe} = formData
+        props.login(email, password, rememberMe)
+        setSubmitting(false)
+    }
     return <div className={`${styles.form_wrapper} element`}>
-        <form onSubmit={props.handleSubmit} className={styles.form}>
-            <Field
-                component='input'
-                name='email'
-                placeholder='Email'
-                validate={[required]}
-                className={`${styles.form_item} ${styles.field}`}
-            />
-            {/* <input className={`${styles.form_item} ${styles.field}`} placeholder='Login' type="text"/> */}
-            <Field
-                component='input'
-                name='password'
-                placeholder='Password'
-                validate={[required]}
-                className={`${styles.form_item} ${styles.field}`}
-            />
-            {/* <input className={`${styles.form_item} ${styles.field}`} placeholder='Password' type="text"/> */}
-            {props.error && <div className={styles.error}>{props.error}</div>}
-            <button className={`${styles.form_item}`}>Log in</button>
-            <div className={styles.config}>
-                <div className={styles.remember}>
-                    <span className={styles.remember_descr}>Remember me</span>
-                    <Field
-                        component='input'
-                        type='checkbox'
-                        name='rememberMe'
-                    />
-                    {/* <input type="checkbox"/> */}
-                </div>
-                <span className={styles.forgot}>Forgot your password?</span>
-            </div>
-        </form>
-        <div className={styles.create_ac}>
-            <span className={styles.create}>Create new account</span>
-        </div>
+        <Formik
+            initialValues={{email: '', password: '', rememberMe: false}}
+            validate={LoginFormValidate}
+            onSubmit={onSubmit}
+        >
+            {({isSubmitting}) => (
+                <Form className={styles.form}>
+                    <>
+                        <Field
+                            type='text'
+                            name='email'
+                            placeholder='Email'
+                            className={`${styles.form_item} ${styles.field}`}
+                        />
+                        <Field
+                            type='text'
+                            name='password'
+                            placeholder='Password'
+                            className={`${styles.form_item} ${styles.field}`}
+                        />
+                        <button type='submit' disabled={isSubmitting} className={`${styles.form_item}`}>
+                            Log in
+                        </button>
+                        <div className={styles.config}>
+                            <div className={styles.remember}>
+                                <span className={styles.remember_descr}>Remember me</span>
+                                <Field
+                                    type='checkbox'
+                                    name='rememberMe'
+                                />
+                            </div>
+                            <span className={styles.forgot}>Forgot your password?</span>
+                        </div>
+                    </>
+                    <div className={styles.create_ac}>
+                        <span className={styles.create}>Create new account</span>
+                    </div>
+                </Form>
+            )}
+        </Formik>
     </div>
 }
 
-const afterSubmit = (result, dispatch) => {
-    dispatch(reset('login'))
-}
-
-export default reduxForm({
-    form: 'login',
-    onSubmitSuccess: afterSubmit
-})(LoginForm)
+export default LoginForm
