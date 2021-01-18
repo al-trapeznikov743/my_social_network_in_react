@@ -37,7 +37,8 @@ export const login = (email, password, rememberMe, captcha) => {
             const errorMessage = response.data.messages.length > 0
                 ? response.data.messages[0]
                 : 'Some error'
-            return Promise.reject(errorMessage)
+            //return Promise.reject(errorMessage)
+            return errorMessage
         }
     }
 }

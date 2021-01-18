@@ -1,27 +1,40 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Formik, Form, Field} from 'formik'
 import styles from './LoginForm.module.sass'
+import * as yup from 'yup'
 
-
-
-const LoginFormValidate = (value) => {
-    const errors = {}
-    return errors
-}
 
 const LoginForm = (props) => {
-    const onSubmit = (formData, {setSubmitting}) => {
+
+    const [errorMessage, setErrorMessage] = useState(null)
+
+    const validationSchema = yup.object().shape({
+        email: yup.string().required('Required field'),
+        password: yup.string().required('Required field')
+    })
+
+    const onSubmit = async (formData, {setSubmitting, resetForm}) => {
         const {email, password, rememberMe} = formData
-        props.login(email, password, rememberMe)
+        const errorMessage = await props.login(email, password, rememberMe)
+        if (errorMessage) {
+            setErrorMessage(errorMessage)
+            resetForm()
+        }
         setSubmitting(false)
+        resetForm()
     }
     return <div className={`${styles.form_wrapper} element`}>
         <Formik
             initialValues={{email: '', password: '', rememberMe: false}}
-            validate={LoginFormValidate}
+            validationSchema={validationSchema}
             onSubmit={onSubmit}
         >
-            {({isSubmitting}) => (
+            {({
+                isSubmitting,
+                isValid,
+                touched,
+                errors
+            }) => (
                 <Form className={styles.form}>
                     <>
                         <Field
@@ -30,13 +43,24 @@ const LoginForm = (props) => {
                             placeholder='Email'
                             className={`${styles.form_item} ${styles.field}`}
                         />
+                        {touched.email && errors.email &&
+                            <span className={styles.error}>
+                                Field is required
+                            </span>}
                         <Field
                             type='text'
                             name='password'
                             placeholder='Password'
                             className={`${styles.form_item} ${styles.field}`}
                         />
-                        <button type='submit' disabled={isSubmitting} className={`${styles.form_item}`}>
+                        {touched.email && errors.email &&
+                            <span className={styles.error}>
+                                Field is required
+                            </span>}
+                        <button
+                            type='submit'
+                            disabled={isSubmitting || !isValid}
+                            className={`${styles.form_item}`}>
                             Log in
                         </button>
                         <div className={styles.config}>
@@ -52,6 +76,7 @@ const LoginForm = (props) => {
                     </>
                     <div className={styles.create_ac}>
                         <span className={styles.create}>Create new account</span>
+                        {errorMessage && <span className={styles.error}>{errorMessage}</span>}
                     </div>
                 </Form>
             )}

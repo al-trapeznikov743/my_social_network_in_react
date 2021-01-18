@@ -1,24 +1,33 @@
 import {Formik, Form, Field} from 'formik'
 import styles from '../../profile/addPost/AddPost.module.sass'
+import * as yup from 'yup'
 
 
-/* const AddPostFormValidate = (value) => {
-    const errors = {}
-    return errors
-} */
 
 const AddPostForm = (props) => {
-    const onAddPost = (value, {setSubmitting}) => {
+    const validationSchema = yup.object().shape({
+        newPost: yup.string().required('Required field')
+    })
+    const onAddPost = (value, {setSubmitting, resetForm}) => {
         props.addPost(value.newPost)
         setSubmitting(false)
+        resetForm()
     }
     return <>
         <Formik
             initialValues={{newPost: ''}}
-            /* validate={AddPostFormValidate} */
             onSubmit={onAddPost}
+            validationSchema={validationSchema}
         >
-            {({isSubmitting}) => (
+            {({
+                isSubmitting,
+                isValid,
+                touched,
+                errors,
+                handleChange,
+                handleBlur,
+                dirty
+            }) => (
                 <Form>
                     <div className={styles.field_wrapper}>
                         <div className={styles.new}>
@@ -29,8 +38,11 @@ const AddPostForm = (props) => {
                                 type='text'
                                 name='newPost'
                                 placeholder="What's new?"
+                                /* onChange={handleChange}
+                                onBlur={handleBlur} */
                                 className={styles.field}
                             />
+                            {touched.newPost && errors.newPost && <div>{errors.newPost}</div>}
                         </div>
                         <div className='link_icon'>
                             <i className={`fas fa-smile ${styles.icon} interaction`}></i>
@@ -48,7 +60,10 @@ const AddPostForm = (props) => {
                                 <i className={`fas fa-video ${styles.icon} interaction`}></i>
                             </div>
                         </div>
-                        <button type='submit' disabled={isSubmitting}>
+                        <button
+                            type='submit'
+                            disabled={isSubmitting || !isValid}
+                        >
                             Send
                         </button>
                     </div>

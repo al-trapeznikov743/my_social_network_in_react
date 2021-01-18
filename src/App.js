@@ -18,7 +18,7 @@ import store from './redux/store'
 class App extends React.Component {
 
     catchAllUnhandledErrors = (promiseRejectionEvent) => {
-        console.log(promiseRejectionEvent)
+        //console.log(promiseRejectionEvent)
     }
 
     componentDidMount() {
