@@ -26,7 +26,7 @@ const Sidebar = () => {
                 <span>Messenger</span>
             </NavLink>
 
-            <NavLink to='/login' className={styles.link}>
+            {/* <NavLink to='/login' className={styles.link}>
                 <div className='link_icon'>
                     <i className='fas fa-newspaper'></i>
                 </div>
@@ -45,7 +45,7 @@ const Sidebar = () => {
                     <i className='fas fa-cog'></i>
                 </div>
                 <span>Settings</span>
-            </NavLink>
+            </NavLink> */}
         </nav>
     </div>
 }
