@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/al-trapeznikov743/my_social_network_react/static/css/main.759cf2c0.chunk.css",
+    "main.js": "/al-trapeznikov743/my_social_network_react/static/js/main.9fdb4bbe.chunk.js",
+    "main.js.map": "/al-trapeznikov743/my_social_network_react/static/js/main.9fdb4bbe.chunk.js.map",
+    "runtime-main.js": "/al-trapeznikov743/my_social_network_react/static/js/runtime-main.92856c50.js",
+    "runtime-main.js.map": "/al-trapeznikov743/my_social_network_react/static/js/runtime-main.92856c50.js.map",
+    "static/js/2.52a9d36e.chunk.js": "/al-trapeznikov743/my_social_network_react/static/js/2.52a9d36e.chunk.js",
+    "static/js/2.52a9d36e.chunk.js.map": "/al-trapeznikov743/my_social_network_react/static/js/2.52a9d36e.chunk.js.map",
+    "static/js/3.7c0f9ac1.chunk.js": "/al-trapeznikov743/my_social_network_react/static/js/3.7c0f9ac1.chunk.js",
+    "static/js/3.7c0f9ac1.chunk.js.map": "/al-trapeznikov743/my_social_network_react/static/js/3.7c0f9ac1.chunk.js.map",
+    "index.html": "/al-trapeznikov743/my_social_network_react/index.html",
+    "static/css/main.759cf2c0.chunk.css.map": "/al-trapeznikov743/my_social_network_react/static/css/main.759cf2c0.chunk.css.map",
+    "static/js/2.52a9d36e.chunk.js.LICENSE.txt": "/al-trapeznikov743/my_social_network_react/static/js/2.52a9d36e.chunk.js.LICENSE.txt",
+    "static/media/NASA_logo.d30e3cd5.svg": "/al-trapeznikov743/my_social_network_react/static/media/NASA_logo.d30e3cd5.svg",
+    "static/media/Rick.af5e0c07.jpg": "/al-trapeznikov743/my_social_network_react/static/media/Rick.af5e0c07.jpg",
+    "static/media/RickLarge.af5e0c07.jpg": "/al-trapeznikov743/my_social_network_react/static/media/RickLarge.af5e0c07.jpg",
+    "static/media/solid.min.css": "/al-trapeznikov743/my_social_network_react/static/media/fa-solid-900.46fdbd2d.woff",
+    "static/media/isFetching.8831182d.jpg": "/al-trapeznikov743/my_social_network_react/static/media/isFetching.8831182d.jpg",
+    "static/media/large.ec17906c.jpg": "/al-trapeznikov743/my_social_network_react/static/media/large.ec17906c.jpg",
+    "static/media/search.9427b252.svg": "/al-trapeznikov743/my_social_network_react/static/media/search.9427b252.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.92856c50.js",
+    "static/js/2.52a9d36e.chunk.js",
+    "static/css/main.759cf2c0.chunk.css",
+    "static/js/main.9fdb4bbe.chunk.js"
+  ]
+}
